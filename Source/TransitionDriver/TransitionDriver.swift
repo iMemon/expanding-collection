@@ -106,7 +106,7 @@ extension TransitionDriver {
       
       self.view.layoutIfNeeded()
       self.backImageView?.alpha  = 0
-      copyCell.shadowView?.alpha = 1
+      copyCell.shadowView?.alpha = 0
       
       copyCell.frontContainerView.subviewsForEach { if $0.tag == Constants.HideKey { $0.alpha = 1 } }
       }, completion: { success in

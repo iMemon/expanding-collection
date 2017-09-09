@@ -24,9 +24,11 @@ class DemoViewController: ExpandingViewController {
 extension DemoViewController {
   
   override func viewDidLoad() {
-    itemSize = CGSize(width: 256, height: 335)
+    itemSize = CGSize(width: 308, height: 435+41.5)
     super.viewDidLoad()
     
+    self.view.backgroundColor = UIColor.white
+    self.collectionView?.backgroundColor = UIColor.white
     registerCell()
     fillCellIsOpenArray()
     addGesture(to: collectionView!)
@@ -87,7 +89,7 @@ extension DemoViewController {
     let indexPath = IndexPath(row: currentIndex, section: 0)
     guard let cell  = collectionView?.cellForItem(at: indexPath) as? DemoCollectionViewCell else { return }
     // double swipe Up transition
-    if cell.isOpened == true && sender.direction == .up {
+    if /*cell.isOpened == true &&*/ sender.direction == .up {
       pushToViewController(getViewController())
       
       if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
@@ -95,9 +97,9 @@ extension DemoViewController {
       }
     }
     
-    let open = sender.direction == .up ? true : false
-    cell.cellIsOpen(open)
-    cellsIsOpen[indexPath.row] = cell.isOpened
+//    let open = sender.direction == .up ? true : false
+//    cell.cellIsOpen(open)
+//    cellsIsOpen[indexPath.row] = cell.isOpened
   }
   
 }
@@ -120,7 +122,14 @@ extension DemoViewController {
 
     let index = indexPath.row % items.count
     let info = items[index]
-    cell.backgroundImageView?.image = UIImage(named: info.imageName)
+//    cell.backgroundImageView?.image = UIImage(named: info.imageName)
+    if indexPath.item % 3 == 0 {
+        cell.backgroundImageView?.tintColor = UIColor.orange
+    } else if indexPath.item % 3 == 1 {
+        cell.backgroundImageView?.tintColor = UIColor.green
+    } else if indexPath.item % 3 == 2 {
+        cell.backgroundImageView?.tintColor = UIColor.gray
+    }
     cell.customTitle.text = info.title
     cell.cellIsOpen(cellsIsOpen[index], animated: false)
   }
@@ -129,15 +138,15 @@ extension DemoViewController {
     guard let cell = collectionView.cellForItem(at: indexPath) as? DemoCollectionViewCell
           , currentIndex == indexPath.row else { return }
 
-    if cell.isOpened == false {
-      cell.cellIsOpen(true)
-    } else {
+//    if cell.isOpened == false {
+//      cell.cellIsOpen(true)
+//    } else {
       pushToViewController(getViewController())
       
       if let rightButton = navigationItem.rightBarButtonItem as? AnimatingBarButton {
         rightButton.animationSelected(true)
       }
-    }
+//    }
   }
   
 }

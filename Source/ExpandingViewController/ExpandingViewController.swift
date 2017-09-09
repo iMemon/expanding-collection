@@ -60,20 +60,20 @@ public extension ExpandingViewController {
       return
     }
     
-    viewController.transitionDriver = transitionDriver
-    let insets = viewController.automaticallyAdjustsScrollViewInsets
-    let tabBarHeight =  insets == true ? navigationController.navigationBar.frame.size.height : 0
-    let stausBarHeight = insets == true ? UIApplication.shared.statusBarFrame.size.height : 0
-    let backImage = getBackImage(viewController, headerHeight: viewController.headerHeight)
-    
-    transitionDriver?.pushTransitionAnimationIndex(currentIndex,
-                                                   collecitionView: collectionView,
-                                                   backImage: backImage,
-                                                   headerHeight: viewController.headerHeight,
-                                                   insets: tabBarHeight + stausBarHeight) { headerView in
-      viewController.tableView.tableHeaderView = headerView
-      self.navigationController?.pushViewController(viewController, animated: false)
-    }
+//    viewController.transitionDriver = transitionDriver
+//    let insets = viewController.automaticallyAdjustsScrollViewInsets
+//    let tabBarHeight =  insets == true ? navigationController.navigationBar.frame.size.height : 0
+//    let stausBarHeight = insets == true ? UIApplication.shared.statusBarFrame.size.height : 0
+//    let backImage = getBackImage(viewController, headerHeight: viewController.headerHeight)
+//    
+//    transitionDriver?.pushTransitionAnimationIndex(currentIndex,
+//                                                   collecitionView: collectionView,
+//                                                   backImage: backImage,
+//                                                   headerHeight: viewController.headerHeight,
+//                                                   insets: tabBarHeight + stausBarHeight) { headerView in
+//      viewController.tableView.tableHeaderView = headerView
+//    }
+    self.navigationController?.pushViewController(viewController, animated: true)
   }
 }
 

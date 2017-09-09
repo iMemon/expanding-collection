@@ -66,17 +66,17 @@ extension DemoTableViewController {
 extension DemoTableViewController {
   
   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//    if scrollView.contentOffset.y < -25 {
-//      // buttonAnimation
-//      let viewControllers: [DemoViewController?] = navigationController?.viewControllers.map { $0 as? DemoViewController } ?? []
-//
-//      for viewController in viewControllers {
-//        if let rightButton = viewController?.navigationItem.rightBarButtonItem as? AnimatingBarButton {
-//          rightButton.animationSelected(false)
-//        }
-//      }
-//      popTransitionAnimation()
-//    }
+    if scrollView.contentOffset.y < -25 {
+      // buttonAnimation
+      let viewControllers: [DemoViewController?] = navigationController?.viewControllers.map { $0 as? DemoViewController } ?? []
+
+      for viewController in viewControllers {
+        if let rightButton = viewController?.navigationItem.rightBarButtonItem as? AnimatingBarButton {
+          rightButton.animationSelected(false)
+        }
+      }
+      popTransitionAnimation()
+    }
     
     scrollOffsetY = scrollView.contentOffset.y
   }

@@ -51,6 +51,7 @@ extension ExpandingTableViewController {
    */
   public func popTransitionAnimation() {
     guard let transitionDriver = self.transitionDriver else {
+      self.navigationController?.popViewController(animated: true)
       return
     }
     
